@@ -47,14 +47,19 @@ print classes
 
 ##########################################
 
+import keras
+from keras.models import load_model
 from keras.models import Sequential
-from keras.preprocessing.image import img_to_array, load_img
+import cv2
+import numpy as np 
+from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 
+test_model = load_model('second_try.h5')
 
-model = Sequential().load_weights('first_try.h5', by_name=True)
-img = load_img('image_to_predict.jpg',False,target_size=(img_width,img_height))
+img_width, img_height = 150, 150
+img = load_img('predict_2.jpg',False,target_size=(img_width,img_height))
 x = img_to_array(img)
 x = np.expand_dims(x, axis=0)
 preds = test_model.predict_classes(x)
-prob = test_model.predict_proba(x)
+probs = test_model.predict_proba(x)
 print(preds, probs)

@@ -32,7 +32,7 @@ test_model.add(Dropout(0.5))
 test_model.add(Dense(1))
 test_model.add(Activation('sigmoid'))
 
-test_model = load_weights('first_try.h5')
+test_model = load_model('second_try.h5')
 def predict(basedir, model):
     for i in range(1401,1411):
         path = basedir + str(i) + '.jpg'
